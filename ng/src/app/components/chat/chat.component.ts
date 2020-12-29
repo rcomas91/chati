@@ -44,10 +44,18 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
 
-    this.client = new Client();
-    this.client.webSocketFactory = () => {
-      return new SockJS("http://localhost:8080/wss");
-    }
+    
+     const serverUrl='https://limitless-brook-00453.herokuapp.com/wss';
+      const ws=new SockJS(serverUrl,{transports: ['websocket']}
+    );
+      this.client=Stomp.over(ws);
+    // 		this.client=new Client();
+	// this.client.webSocketFactory =()=>{
+  //     return new WebSocket("http://localhost:8178/wss");
+    
+    
+    
+
 
     this.client.onConnect = (frame) => {
       console.log('Conectados: ' + this.client.connected + ' : ' + frame);
