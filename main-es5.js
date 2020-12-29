@@ -893,11 +893,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function ngOnInit() {
           var _this = this;
 
-          this.client = new _stomp_stompjs__WEBPACK_IMPORTED_MODULE_1__["Client"]();
-
-          this.client.webSocketFactory = function () {
-            return new sockjs_client__WEBPACK_IMPORTED_MODULE_2__("http://localhost:8080/wss");
-          };
+          var serverUrl = 'https://limitless-brook-00453.herokuapp.com/wss';
+          var ws = new sockjs_client__WEBPACK_IMPORTED_MODULE_2__(serverUrl, {
+            transports: ['websocket']
+          });
+          this.client = _stomp_stompjs__WEBPACK_IMPORTED_MODULE_1__["Stomp"].over(ws); // 		this.client=new Client();
+          // this.client.webSocketFactory =()=>{
+          //     return new WebSocket("http://localhost:8178/wss");
 
           this.client.onConnect = function (frame) {
             console.log('Conectados: ' + _this.client.connected + ' : ' + frame);

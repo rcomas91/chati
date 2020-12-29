@@ -312,10 +312,12 @@ class ChatComponent {
         console.log(this.clienteId);
     }
     ngOnInit() {
-        this.client = new _stomp_stompjs__WEBPACK_IMPORTED_MODULE_1__["Client"]();
-        this.client.webSocketFactory = () => {
-            return new sockjs_client__WEBPACK_IMPORTED_MODULE_2__("http://localhost:8080/wss");
-        };
+        const serverUrl = 'https://limitless-brook-00453.herokuapp.com/wss';
+        const ws = new sockjs_client__WEBPACK_IMPORTED_MODULE_2__(serverUrl, { transports: ['websocket'] });
+        this.client = _stomp_stompjs__WEBPACK_IMPORTED_MODULE_1__["Stomp"].over(ws);
+        // 		this.client=new Client();
+        // this.client.webSocketFactory =()=>{
+        //     return new WebSocket("http://localhost:8178/wss");
         this.client.onConnect = (frame) => {
             console.log('Conectados: ' + this.client.connected + ' : ' + frame);
             this.conectado = true;
