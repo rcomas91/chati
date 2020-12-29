@@ -6,7 +6,7 @@
     "start": "ng serve",
     "prebuild:ci": "node git-version.js",
     "build": "ng build",
-    "deploy": "ng build -c=$BUILD_CONFIG --baseHref=/my-backend/",
+    "deploy": "ng build -c=$BUILD_CONFIG --baseHref=/",
     "test": "ng test",
     "test:ci": "ng test --no-watch --code-coverage --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
