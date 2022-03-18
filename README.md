@@ -1,3 +1,3 @@
 # Chati
-This is a example of websocket application using angular and spring.
+This is a example of websocket application using Angular and Spring.
 
